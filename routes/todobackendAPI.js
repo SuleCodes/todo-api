@@ -8,7 +8,7 @@ router.get("/", function (req, res, next) {
     try {
         const jsonString = fs.readFileSync(require('path').resolve(
             __dirname, '..',
-            'todoListStore.json'), "utf-8");
+            'todoListStore.json'), 'utf-8');
         const data = JSON.parse(jsonString);
         res.send(data);
     }
@@ -22,7 +22,7 @@ router.post("/save", function (req, res) {
     try {
         fs.writeFileSync(require('path').resolve(
             __dirname, '..',
-            'todoListStore.json'), JSON.stringify(req.body));
+            'todoListStore.json'), JSON.stringify(req.body, null, 2));
         res.send();
     }
     catch (ex) {
